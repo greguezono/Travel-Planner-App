@@ -26,7 +26,31 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-           }
+           },
+           {
+            test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+            use: [
+              {
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[ext]',
+                  outputPath: 'webfonts/'
+                }
+              }
+            ]
+          },
+          {
+            test: /\.(gif|png|jpe?g)$/,
+            use: [
+              {
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[ext]',
+                  outputPath: 'images/'
+                }
+              }
+            ]
+          }
         ]
     },
     plugins: [
@@ -42,7 +66,6 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        }),
-        new WorkboxPlugin.GenerateSW()
+        })
     ]
 }
