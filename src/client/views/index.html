@@ -14,41 +14,57 @@
 					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 						<div class="content">
 							<h1>Travel Planner</h1>
-							<p class="major">A minimalist travel planner web application for your personal travels! To get started, enter a destination and the departure date below:</p>
-							<ul class="actions stacked">
-								<li><a href="#first" class="button big wide smooth-scroll-middle">Get Started</a></li>
-							</ul>
+							<p class="major">A minimalist travel planner web application for your personal adventures! <br> <br>
+                            To get started, enter your next destination and the departure date below: <br> </p>
+                            <form class="" onsubmit="return Client.handleSubmit(event)">
+                                <input class="fields" id="quote" type="text" name="input" value="" placeholder="Enter location here:">
+                                <input class="fields" id="author" type="text" name="input" value="" placeholder="Departure Date: MM/DD/YYYY">
+                                <input class="button big wide" type="submit" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                            </form>
 						</div>
 						<div class="image">
 							<img src="images/banner.jpg" alt="" />
 						</div>
 					</section>
-				<!-- Current Trips -->
+				<!-- Future Trips -->
 					<section class="wrapper style1 align-center">
 						<div class="inner">
-							<h2>My trips:</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum.</p>
+							<h2>My Next Destinations:</h2>
+							<p>Your itinerary for your next destinations are listed below. Add some destinations for when Covid-19 ends using the form above!</p>
 						</div>
-					</section>
+                    </section>
+                <!-- Future Trips go here: -->
+                <section class="orient-right spotlight style1 content-align-left image-position-center onscroll-image-fade-in" id="first">
+                    <div class="content">
+                        <h2>Location: </h2>
+                        <h4>Departure Date:</h4>
+                        <p> Your trip to {Location name} is {days} days away!</p>
+                        <p> Typical weather forcast for then is:</p>
+                        <button>Remove Trip</button>
+                    </div>
+                    <div class="image">
+                        <img src="" alt="" />
+                    </div>
+                </section>
 				<!-- Past Trips -->
 					<section class="wrapper style1 align-center">
 						<div class="inner">
 							<h2>My Past Trips:</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum.</p>
+							<p>Your past trips for 2019 before quarantine started are listed below. You've been to some cool adventures in the past year, right on!</p>
 						</div>
 					</section>
                 <div>
-				<!-- Past Trip 1 -->
+				<!-- Past Trip 3 -->
 					<section class="orient-right spotlight style1 content-align-left image-position-center onscroll-image-fade-in" id="first">
 						<div class="content">
-							<h2>Magna etiam feugiat</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Learn More</a></li>
-							</ul>
+							<h2>Great Barrier Reef, Australia</h2>
+                            <h4>September 20, 2019 – September 30, 2019</h4>
+                            <p> A trip to see Australia's amazing nature and wildlife culminated with you scuba diving in the Great Barrier Reef off the coast of Queensland, Australia. You and your good friend Cody Maverick (pictured on the left) got to see the great biodiversity of 
+                                 the world's largest coral reef! There was a close incident where you had to fend off a shark with only your bare hands, but, hey, it's all part of the adventure. No limbs lost so no harm done!
+                            </p>
 						</div>
 						<div class="image">
-							<img src="images/spotlight01.jpg" alt="" />
+							<img src="images/trip3.jpg" alt="" />
 						</div>
 					</section>
 
@@ -56,27 +72,27 @@
 					<section class="orient-left spotlight style1 content-align-left image-position-center onscroll-image-fade-in">
 						<div class="content">
 							<h2>Teahupo'o, Tahiti</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Learn More</a></li>
-							</ul>
+                            <h4>August 24, 2019 – August 29, 2019</h4>
+                            <p> Surf trip to Teahupo'o in Tahiti, French Polynesia for the 2019 WSL Tahiti Pro. Teahupo'o is a reef break where the swell mainly break left and is world renowned for the consistent number of barrels it delivers. An incredible 5 days full of fun surf and competing against the world's best surfers!
+                                As Chicken Joe from Surf's Up would say, radical dude!
+                            </p>
 						</div>
 						<div class="image">
 							<img src="images/trip2.jpeg" alt="" />
 						</div>
 					</section>
 
-				<!-- Past Trip 3 -->
+				<!-- Past Trip 1 -->
 					<section class="orient-right spotlight style1 content-align-left image-position-center onscroll-image-fade-in">
 						<div class="content">
-							<h2>Pharetra etiam nulla</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Learn More</a></li>
-							</ul>
+							<h2>Mount Everest, Nepal</h2>
+                            <h4>March 28, 2019 – May 20, 2019</h4>
+                            <p> You did it! It took two months but you climbed Mount Everest, the world's highest mountain above sea level in Nepal, China. Not only did it take two months to climb due to the altitude acclimation and difficult journey, but once at the top, you managed to be the first
+                                person to ski down the whole mountain range! You loose cannon.
+                            </p>
 						</div>
 						<div class="image">
-							<img src="images/spotlight03.jpg" alt="" />
+							<img src="images/trip1.jpg" alt="" />
 						</div>
 					</section>
                 </div>
