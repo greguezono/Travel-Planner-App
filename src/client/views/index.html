@@ -17,8 +17,8 @@
 							<p class="major">A minimalist travel planner web application for your personal adventures! <br> <br>
                             To get started, enter your next destination and the departure date below: <br> </p>
                             <form class="" onsubmit="return Client.handleSubmit(event)">
-                                <input class="fields" id="quote" type="text" name="input" value="" placeholder="Enter location here:">
-                                <input class="fields" id="author" type="text" name="input" value="" placeholder="Departure Date: MM/DD/YYYY">
+                                <input class="fields" id="destination" type="text" name="input" value="" placeholder="Enter destination here:">
+                                <input class="fields" id="depDate" type="text" name="input" value="" placeholder="Departure Date: MM/DD/YYYY">
                                 <input class="button big wide" type="submit" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                             </form>
 						</div>
@@ -33,6 +33,7 @@
 							<p>Your itinerary for your next destinations are listed below. Add some destinations for when Covid-19 ends using the form above!</p>
 						</div>
                     </section>
+                <div id="trips">
                 <!-- Future Trips go here: -->
                 <section class="orient-right spotlight style1 content-align-left image-position-center onscroll-image-fade-in" id="first">
                     <div class="content">
@@ -45,6 +46,7 @@
                     <div class="image">
                         <img src="" alt="" />
                     </div>
+                </div>
                 </section>
 				<!-- Past Trips -->
 					<section class="wrapper style1 align-center">
