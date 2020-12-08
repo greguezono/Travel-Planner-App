@@ -34,21 +34,22 @@
 							<p>Your itinerary for your next destinations are listed below. Add some destinations for when Covid-19 ends using the form above!</p>
 						</div>
                     </section>
-                <div id="trips">
                 <!-- Future Trips go here: -->
-                <section class="orient-right spotlight style1 content-align-left image-position-center onscroll-image-fade-in" id="first">
-                    <div class="content">
-                        <h2>Location: </h2>
-                        <h4>Departure Date:</h4>
-                        <p> Your trip to {Location name} is {days} days away!</p>
-                        <p> Typical weather forcast for then is:</p>
-                        <button>Remove Trip</button>
-                    </div>
-                    <div class="image">
-                        <img src="" alt="" />
-                    </div>
+                <div id="trips">
+                    <section class="orient-right spotlight style1 content-align-left image-position-center onscroll-image-fade-in" id="first">
+                        <div class="content">
+                            <h2> Location: </h2>
+                            <h3> Departure Date:</h3>
+                            <h4> Your trip to {Location name} is {days} days away! </h4>
+                            <h4> You currently plan on staying there for {days} days. </h4>
+                            <h4> Typical weather forcast for the first week of your trip is:</h4>
+                            <button onclick="Client.createTripSection(event)">Remove Trip</button>
+                        </div>
+                        <div class="image">
+                            <img src="" alt="" />
+                        </div>
                 </div>
-                </section>
+                    </section>
 				<!-- Past Trips -->
 					<section class="wrapper style1 align-center">
 						<div class="inner">

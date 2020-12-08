@@ -6,8 +6,14 @@ import './media/trip3.jpg'
 
 import { validateForm } from './js/formValidator'
 import { handleSubmit } from './js/formHandler'
+import { 
+    removeTrip,
+    createTripSection
+} from './js/docHandler'
 
 export {
     validateForm,
-    handleSubmit
+    handleSubmit,
+    removeTrip,
+    createTripSection
 }

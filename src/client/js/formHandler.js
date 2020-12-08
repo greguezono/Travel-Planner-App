@@ -11,6 +11,7 @@ function handleSubmit(event) {
         Client.validateForm(city, depDate, retDate)
     } catch (error) {
         alert(error.message)
+        return;
     }
     handleGeonamesApiCall(city).then( function (userData) {
         console.log(userData)
