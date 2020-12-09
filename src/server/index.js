@@ -26,13 +26,13 @@ const geonamesUsername = process.env.GEONAMES_USERNAME;
 
 // Geonames Post Method Route
 app.post('/postGeoNames', async function (req, res) {
-    let city = req.body.city
-    console.log(city)
+    let data = req.body
+    let city = data['city']
     let path = getGeonamesPath(city)
     let apiRes = await fetch(path)
     try {
-        let data = await apiRes.json()
-        let newData = parseGeonamesData(data)
+        let reqData = await apiRes.json()
+        let newData = parseGeonamesData(reqData, data)
         res.send(JSON.stringify(newData))
     } catch (error) {
         console.log(error)
@@ -40,18 +40,21 @@ app.post('/postGeoNames', async function (req, res) {
 })
 
 function getGeonamesPath(city) {
-    console.log(geonamesUsername)
     return `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${geonamesUsername}`;
 }
 
-function parseGeonamesData(data) {
+function parseGeonamesData(reqData, data) {
     let newData = {}
-    totalResults = data['totalResultsCount']
+    totalResults = reqData['totalResultsCount']
     if (totalResults > 0) {
-        geonames = data['geonames'][0]
+        geonames = reqData['geonames'][0]
+        newData['city'] = data['city']
+        newData['depDate'] = data['depDate']
+        newData['retDate'] = data['retDate']
         newData['country'] = geonames['countryName']
         newData['lat'] = geonames['lat']
         newData['long'] = geonames['lng']
     }
+    console.log(newData)
     return newData
 }

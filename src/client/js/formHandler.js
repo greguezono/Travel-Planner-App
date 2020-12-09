@@ -13,7 +13,9 @@ function handleSubmit(event) {
         alert(error.message)
         return;
     }
-    handleGeonamesApiCall(city).then( function (userData) {
+    
+    let data = {"city": city, "depDate": depDate, "retDate": retDate}
+    handleGeonamesApiCall(data).then( function (userData) {
         console.log(userData)
     })
 }
