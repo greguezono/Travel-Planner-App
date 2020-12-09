@@ -1,34 +1,34 @@
 // Required modules
-const express = require('express');
-const bodyParser = require('body-parser');
-const fetch = require("node-fetch");
-const cors = require('cors');
-const dotenv = require('dotenv');
-dotenv.config();
+const express = require('express')
+const bodyParser = require('body-parser')
+const fetch = require("node-fetch")
+const cors = require('cors')
+const dotenv = require('dotenv')
+dotenv.config()
 
 // Start up an instance of app
-const app = express();
+const app = express()
 
 // Middleware Setup
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(cors())
 
 // Update server to use dist folder
-app.use(express.static('dist'));
+app.use(express.static('dist'))
 
 // Setup Server
-const port = 8081;
-const server = app.listen(port, () => {console.log(`Server ${server} running on localhost: ${port}`)});
+const port = 8081
+const server = app.listen(port, () => {console.log(`Server ${server} running on localhost: ${port}`)})
 
 // Api constants
-const geonamesUsername = process.env.GEONAMES_USERNAME;
+const geonamesUsername = process.env.GEONAMES_USERNAME
+const weatherBitKey = process.env.WEATHERBIT_KEY
 
 // Geonames Post Method Route
 app.post('/postGeoNames', async function (req, res) {
     let data = req.body
-    let city = data['city']
-    let path = getGeonamesPath(city)
+    let path = getGeonamesPath(data['city'])
     let apiRes = await fetch(path)
     try {
         let reqData = await apiRes.json()
@@ -55,6 +55,27 @@ function parseGeonamesData(reqData, data) {
         newData['lat'] = geonames['lat']
         newData['long'] = geonames['lng']
     }
-    console.log(newData)
     return newData
+}
+
+// WeatherBit Post Method Route
+app.post('/postWeatherBit', async function (req, res) {
+    let data = req.body
+    let path = getCurrentWeatherBitPath(data['lat'], data['long'])
+    let apiRes = await fetch(path)
+    try {
+        let reqData = await apiRes.json()
+        let newData = parseWeatherBitData(reqData, data)
+        res.send(JSON.stringify(newData))
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+function getCurrentWeatherBitPath(lat, long) {
+    return `http://api.weatherbit.io/v2.0/current?key=${weatherBitKey}&lang=en&lat=${lat}&lon=${long}`
+}
+
+function parseWeatherBitData(reqData, data) {
+    console.log(reqData);
 }

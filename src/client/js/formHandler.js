@@ -1,4 +1,4 @@
-import { handleGeonamesApiCall } from './apiCallHandler.js';
+import { handlePostCall } from './apiCallHandler.js';
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -13,10 +13,12 @@ function handleSubmit(event) {
         alert(error.message)
         return;
     }
-    
+
     let data = {"city": city, "depDate": depDate, "retDate": retDate}
-    handleGeonamesApiCall(data).then( function (userData) {
-        console.log(userData)
+    handlePostCall(data, '/postGeoNames').then( function (data) {
+        handlePostCall(data, '/postWeatherBit')
+    }).then( function(data) {
+        console.log(data)
     })
 }
 

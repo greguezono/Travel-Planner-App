@@ -1,6 +1,6 @@
-async function handleGeonamesApiCall(data) {
+async function handlePostCall(data, path) {
     try {
-        let res = await fetch('http://localhost:8081/postGeoNames', {
+        let res = await fetch('http://localhost:8081' + path, {
             method: 'POST',
             credentials: 'same-origin',
             headers: {
@@ -15,8 +15,6 @@ async function handleGeonamesApiCall(data) {
     }
 }
 
-async function handleWeatherBitApiCall(data) {
-
+export { 
+    handlePostCall
 }
-
-export { handleGeonamesApiCall }
