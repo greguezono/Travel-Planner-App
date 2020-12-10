@@ -14,12 +14,21 @@ function handleSubmit(event) {
         return;
     }
 
-    let data = {"city": city, "depDate": depDate, "retDate": retDate}
-    handlePostCall(data, '/postGeoNames').then( function (data) {
-        handlePostCall(data, '/postWeatherBit')
-    }).then( function(data) {
-        console.log(data)
+    let data = {"city": city, "depDate": parseDate(depDate), "retDate": parseDate(retDate)}
+    handlePostCall(data, '/postGeoNames').then( function (geoData) {
+        return handlePostCall(geoData, '/postWeatherBit')
+    }).then( function(weatherData) {
+        console.log(weatherData)
     })
+}
+
+function parseDate(date) {
+    if (!date) {
+        return null
+    }
+    date = date.split("/");
+    date = new Date(date[2], date[0] - 1, date[1])
+    return date
 }
 
 export { handleSubmit }

@@ -8,7 +8,8 @@ async function handlePostCall(data, path) {
             },
             body: JSON.stringify(data)
         });
-        let resData = res.json()
+        let resData = await res.json()
+        console.log(resData)
         return resData
     } catch (error) {
         console.log(error)
