@@ -1,4 +1,5 @@
-import { handlePostCall } from './apiCallHandler.js';
+import { handlePostCall } from './apiCallHandler.js'
+import { updateUI } from './docHandler.js'
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -20,7 +21,7 @@ function handleSubmit(event) {
     }).then( function(weatherData) {
         return handlePostCall(weatherData, '/postPixabay')
     }).then( function(pixabayData) {
-        console.log(pixabayData)
+        updateUI(pixabayData)
     })
 }
 

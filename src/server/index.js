@@ -100,6 +100,7 @@ function parseWeatherBitData(reqData, data, diffInDays) {
     data['temp'] = reqMap['temp']
     data['precip'] = reqMap['precip']
     data['clouds'] = reqMap['clouds']
+    data['days'] = diffInDays
 }
 
 // src = https://stackoverflow.com/questions/36787908/how-to-check-if-date-is-in-this-week-in-javascript
@@ -138,5 +139,4 @@ function parsePixabayData(reqData, data) {
         reqMap = reqData['hits'][0]
         data['img'] = reqMap['largeImageURL']
     }
-    return data
 }

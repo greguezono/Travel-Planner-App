@@ -38,11 +38,10 @@
                 <div id="trips">
                     <section class="orient-right spotlight style1 content-align-left image-position-center onscroll-image-fade-in" id="first">
                         <div class="content">
-                            <h2> Location: </h2>
-                            <h3> Departure Date:</h3>
-                            <h4> Your trip to {Location name} is {days} days away! </h4>
-                            <h4> You currently plan on staying there for {days} days. </h4>
-                            <h4> Typical weather forcast for the first week of your trip is:</h4>
+                            <h2> Location: {city}, {country}</h2>
+                            <h3> Departure Date: {depDate}</h3>
+                            <h4> You currently plan on staying at {city} for {days} days. </h4>
+                            <h4> Typical weather forcast for the first week of your trip is an average of {temp} and will be {clouds} with {rain}</h4>
                             <button onclick="Client.createTripSection(event)">Remove Trip</button>
                         </div>
                         <div class="image">

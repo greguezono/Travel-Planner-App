@@ -1,20 +1,30 @@
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
 function removeTrip(event) {
     let tripSection = event.target.parentElement.parentElement;
     tripSection.parentNode.removeChild(tripSection);
 }
 
-function createTripSection(event) {
+function updateUI(data) {
+    let section = createTripSection(data)
+    let trips = document.getElementById('trips')
+    trips.appendChild(section)
+}
+
+function createTripSection(data) {
     // Create elements
     let section = document.createElement("section");
     let contentDiv = document.createElement("div");
-    let location = document.createElement("h2");
-    let departureDate = document.createElement("h3");
-    let dayCountdown = document.createElement("h4");
-    let vacationDays = document.createElement("h4");
-    let weatherForcast = document.createElement("h4");
+    let locationSection = document.createElement("h2");
+    let depDateSection = document.createElement("h3");
+    let daysSection = document.createElement("h4");
+    let weatherSection = document.createElement("h4");
     let removeTripButton = document.createElement("button");
     let imageDiv = document.createElement("div");
-    let image = document.createElement("img");
+    let imageSection = document.createElement("img");
+
     // TODO: change align-left / align-right
     // Set classes
     const sectionClasses = ["orient-right", "spotlight", "style1", ,"image-position-center", "onscroll-image-fade-in", "content-align-left"];
@@ -23,19 +33,71 @@ function createTripSection(event) {
     removeTripButton.setAttribute('onclick', 'Client.removeTrip(event)');
     imageDiv.classList.add("image");
 
+    // format sections
+    formatLocationSection(locationSection, data['city'], data['country'])
+    formatDepDateSection(depDateSection, data['depDate'])
+    formatDaysSection(daysSection, data['city'], data['days'])
+    formatWeatherSection(weatherSection, data['temp'], data['precip'], data['clouds'])
+    formatRemoveTripButton(removeTripButton)
+    formatImageSection(imageSection, data['img'])
+
     // Build Elements
-    contentDiv.appendChild(location);
-    contentDiv.appendChild(departureDate);
-    contentDiv.appendChild(dayCountdown);
-    contentDiv.appendChild(vacationDays);
-    contentDiv.appendChild(weatherForcast);
+    contentDiv.appendChild(locationSection);
+    contentDiv.appendChild(depDateSection);
+    contentDiv.appendChild(daysSection);
+    contentDiv.appendChild(weatherSection);
     contentDiv.appendChild(removeTripButton);
-    imageDiv.appendChild(image);
+    imageDiv.appendChild(imageSection);
     section.appendChild(contentDiv);
     section.appendChild(imageDiv);
+    return section
 }
 
+function formatLocationSection(section, city, country) {
+    section.innerHTML = `Location: ${city}, ${country}`
+}
+
+function formatDepDateSection(section, depDate) {
+    depDate = new Date(depDate)
+    section.innerHTML = `Departure Date: ${monthNames[depDate.getMonth()]} ${depDate.getDate()}, ${depDate.getFullYear()}`
+}
+
+function formatDaysSection(section, city, days) {
+    section.innerHTML = `You currently plan on staying at ${city} for ${days} days!`
+}
+
+function formatWeatherSection(section, temp, precip, clouds) {
+    section.innerHTML = `Typical weather forcast for the first week of your trip is an average of ${temp} with ${getCloudInfo(clouds)} skies and ${getPrecipInfo(precip)}`
+}
+
+function formatRemoveTripButton(button) {
+    button.innerHTML = `Remove Trip`
+}
+
+function formatImageSection(imageSection, image) {
+    imageSection.src = image
+}
+
+function getCloudInfo(clouds) {
+    if (clouds == 0) {
+        return 'clear'
+    } else if (clouds < 10) {
+        return 'partly cloudy'
+    } else {
+        return 'cloudy'
+    }
+}
+
+function getPrecipInfo(precip) {
+    if (precip == 0) {
+        return 'no chance of rain!'
+    } else if (precip < 5) {
+        return 'a low chance of rain.'
+    } else {
+        return 'a high chance of rain.'
+    }
+}
 export { 
     removeTrip,
-    createTripSection
+    updateUI
 }
