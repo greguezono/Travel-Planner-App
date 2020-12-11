@@ -24,6 +24,7 @@ const server = app.listen(port, () => {console.log(`Server ${server} running on 
 // Api constants
 const geonamesUsername = process.env.GEONAMES_USERNAME
 const weatherBitKey = process.env.WEATHERBIT_KEY
+const pixabayKey = process.env.PIXABAY_KEY
 
 // Geonames Post Method Route
 app.post('/postGeoNames', async function (req, res) {
@@ -112,4 +113,30 @@ function getDiffInDays(depDate) {
     const diffInMs = new Date(depDate) - new Date(today)
     const diffInDays = diffInMs / (1000 * 60 * 60 * 24)
     return diffInDays
+}
+
+// Pixabay Post Method Route
+app.post('/postPixabay', async function (req, res) {
+    let data = req.body
+    let path = getPixabayPath(data['city'])
+    let apiRes = await fetch(path)
+    try {
+        let reqData = await apiRes.json()
+        parsePixabayData(reqData, data)
+        res.send(JSON.stringify(data))
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+function getPixabayPath(city) {
+    return `https://pixabay.com/api/?key=${pixabayKey}&q=${city}&lang=en`
+}
+
+function parsePixabayData(reqData, data) {
+    if (reqData['totalHits'] && reqData['totalHits'] > 0) {
+        reqMap = reqData['hits'][0]
+        data['img'] = reqMap['largeImageURL']
+    }
+    return data
 }

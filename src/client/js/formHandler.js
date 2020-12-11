@@ -18,7 +18,9 @@ function handleSubmit(event) {
     handlePostCall(data, '/postGeoNames').then( function (geoData) {
         return handlePostCall(geoData, '/postWeatherBit')
     }).then( function(weatherData) {
-        console.log(weatherData)
+        return handlePostCall(weatherData, '/postPixabay')
+    }).then( function(pixabayData) {
+        console.log(pixabayData)
     })
 }
 
