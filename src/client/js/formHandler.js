@@ -1,5 +1,5 @@
-import { handlePostCall } from './apiCallHandler.js'
-import { updateUI } from './docHandler.js'
+import { handlePostCall } from './apiCallHandler'
+import { updateUI } from './docHandler'
 
 let orientLeft = true
 

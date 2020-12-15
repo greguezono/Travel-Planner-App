@@ -105,5 +105,7 @@ function getPrecipInfo(precip) {
 }
 export { 
     removeTrip,
-    updateUI
+    updateUI,
+    getCloudInfo,
+    getPrecipInfo
 }
