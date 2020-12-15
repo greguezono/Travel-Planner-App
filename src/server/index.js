@@ -100,7 +100,7 @@ function parseWeatherBitData(reqData, data, diffInDays) {
     data['temp'] = reqMap['temp']
     data['precip'] = reqMap['precip']
     data['clouds'] = reqMap['clouds']
-    data['days'] = diffInDays
+    data['days'] = getTripDuration(data['depDate'], data['retDate'])
 }
 
 // src = https://stackoverflow.com/questions/36787908/how-to-check-if-date-is-in-this-week-in-javascript
@@ -112,6 +112,12 @@ function getDiffInDays(depDate) {
     var today = new Date()
     today.setHours(0, 0, 0, 0)
     const diffInMs = new Date(depDate) - new Date(today)
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24)
+    return diffInDays
+}
+
+function getTripDuration(depDate, retDate) {
+    const diffInMs = new Date(retDate) - new Date(depDate)
     const diffInDays = diffInMs / (1000 * 60 * 60 * 24)
     return diffInDays
 }

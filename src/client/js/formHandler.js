@@ -1,6 +1,8 @@
 import { handlePostCall } from './apiCallHandler.js'
 import { updateUI } from './docHandler.js'
 
+let orientLeft = true
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -21,7 +23,8 @@ function handleSubmit(event) {
     }).then( function(weatherData) {
         return handlePostCall(weatherData, '/postPixabay')
     }).then( function(pixabayData) {
-        updateUI(pixabayData)
+        updateUI(pixabayData, orientLeft)
+        orientLeft = !orientLeft
     })
 }
 

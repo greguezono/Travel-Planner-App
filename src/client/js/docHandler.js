@@ -7,13 +7,13 @@ function removeTrip(event) {
     tripSection.parentNode.removeChild(tripSection);
 }
 
-function updateUI(data) {
-    let section = createTripSection(data)
+function updateUI(data, orientLeft) {
+    let section = createTripSection(data, orientLeft)
     let trips = document.getElementById('trips')
     trips.appendChild(section)
 }
 
-function createTripSection(data) {
+function createTripSection(data, orientLeft) {
     // Create elements
     let section = document.createElement("section");
     let contentDiv = document.createElement("div");
@@ -27,7 +27,13 @@ function createTripSection(data) {
 
     // TODO: change align-left / align-right
     // Set classes
-    const sectionClasses = ["orient-right", "spotlight", "style1", ,"image-position-center", "onscroll-image-fade-in", "content-align-left"];
+    let sectionClasses
+    if (orientLeft) {
+        sectionClasses = ["orient-left", "spotlight", "style1", ,"image-position-center", "onscroll-image-fade-in", "content-align-right"];
+    } else {
+        sectionClasses = ["orient-right", "spotlight", "style1", ,"image-position-center", "onscroll-image-fade-in", "content-align-left"];
+    }
+    
     section.classList.add(...sectionClasses);
     contentDiv.classList.add("content");
     removeTripButton.setAttribute('onclick', 'Client.removeTrip(event)');
@@ -67,7 +73,7 @@ function formatDaysSection(section, city, days) {
 }
 
 function formatWeatherSection(section, temp, precip, clouds) {
-    section.innerHTML = `Typical weather forcast for the first week of your trip is an average of ${temp} with ${getCloudInfo(clouds)} skies and ${getPrecipInfo(precip)}`
+    section.innerHTML = `Typical weather forcast for the first week of your trip is an average of ${temp}° C with ${getCloudInfo(clouds)} skies and ${getPrecipInfo(precip)}`
 }
 
 function formatRemoveTripButton(button) {
