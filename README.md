@@ -1,6 +1,6 @@
 # Travel Planner Web Application
 Final Project (Project 5) for Udacity's Front-End Web Development Nanodegree Program. For this project I created a travel planner application, 
-which takes in as input a *location* and a *departure date*. The planner then logs the destination name, departing date, and weather information as an entry
+which takes in as input a *location*, a *departure date*, and a *return date*. The planner then logs the destination name, departing date, and weather information as an entry
 in the planner.
 
 ### Instructions
