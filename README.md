@@ -10,5 +10,5 @@ in the planner.
 2. In the command line, go to the Project directory:
   - Run `npm install` 
   - Run `npm run build`
-  - Run `npm run start`
+  - Run `npm start`
 3. The app should now be running on the port specified (default is http://localhost:8081). Open the port in a web browser and the app should be up and running!
