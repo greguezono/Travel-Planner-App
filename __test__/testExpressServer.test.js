@@ -1,5 +1,5 @@
 import "babel-polyfill"
-import { getTripDuration } from '../src/server/index'
+import { getTripDuration } from '../src/server/helpers'
 
 describe("Testing the getTripDuration functionality", () => {
     // The test() function has two arguments - a string description, and an actual test as a callback function.  
