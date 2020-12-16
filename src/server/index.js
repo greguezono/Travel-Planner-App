@@ -146,3 +146,5 @@ function parsePixabayData(reqData, data) {
         data['img'] = reqMap['largeImageURL']
     }
 }
+
+export { getTripDuration }
